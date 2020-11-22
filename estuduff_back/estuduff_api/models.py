@@ -20,6 +20,9 @@ class Program(models.Model):
     modality = models.ForeignKey(Modality, on_delete=models.CASCADE)
     degree = models.ForeignKey(Degree, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class StudyProfile(models.Model):
     name = models.CharField(max_length=20)
@@ -60,6 +63,9 @@ class StudyPlace(models.Model):
         StudyPlaceType, on_delete=models.CASCADE)
     building = models.ForeignKey(Building, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class User(models.Model):
     name = models.CharField(max_length=50)
@@ -67,3 +73,6 @@ class User(models.Model):
     password = models.CharField(max_length=200)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     studyProfile = models.ForeignKey(StudyProfile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
