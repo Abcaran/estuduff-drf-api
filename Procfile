@@ -1,0 +1,1 @@
+web: gunicorn estuduff-drf-api.wsgi
