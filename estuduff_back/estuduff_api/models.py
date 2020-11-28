@@ -58,7 +58,7 @@ class StudyPlace(models.Model):
     complement = models.CharField(max_length=70)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    studyProfile = models.ForeignKey(StudyProfile, on_delete=models.CASCADE)
+    studyProfile = models.ManyToManyField('StudyProfile')
     studyPlaceType = models.ForeignKey(
         StudyPlaceType, on_delete=models.CASCADE)
     building = models.ForeignKey(Building, on_delete=models.CASCADE)

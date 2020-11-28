@@ -12,12 +12,14 @@ class ModalitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Modality
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class DegreeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Degree
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class ProgramSerializer(serializers.ModelSerializer):
@@ -31,24 +33,28 @@ class ProgramSerializer(serializers.ModelSerializer):
     class Meta:
         model = Program
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class StudyProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudyProfile
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class StudyPlaceTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudyPlaceType
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class CampusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Campus
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class BuildingSerializer(serializers.ModelSerializer):
@@ -57,6 +63,7 @@ class BuildingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Building
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class StudyPlaceSerializer(serializers.ModelSerializer):
@@ -73,6 +80,7 @@ class StudyPlaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudyPlace
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -86,3 +94,4 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+        read_only_fields = ('id',)
