@@ -68,10 +68,10 @@ class BuildingSerializer(serializers.ModelSerializer):
 
 class StudyPlaceSerializer(serializers.ModelSerializer):
     building = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=Building.objects.all()
+        queryset=Building.objects.all()
     )
     studyPlaceType = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=StudyPlaceType.objects.all()
+        queryset=StudyPlaceType.objects.all()
     )
     studyProfile = serializers.PrimaryKeyRelatedField(
         many=True, queryset=StudyProfile.objects.all()
