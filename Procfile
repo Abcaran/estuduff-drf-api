@@ -1,1 +1,1 @@
-web: gunicorn estuduff_back/estuduff_back.wsgi
+web: gunicorn estuduff-drf-api.wsgi
