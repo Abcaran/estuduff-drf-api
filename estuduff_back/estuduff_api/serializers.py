@@ -87,11 +87,8 @@ class UserSerializer(serializers.ModelSerializer):
     program = serializers.PrimaryKeyRelatedField(
         many=False, queryset=Program.objects.all()
     )
-    studyProfile = serializers.PrimaryKeyRelatedField(
-        queryset=StudyProfile.objects.all()
-    )
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['name', 'program', 'password', 'email']
         read_only_fields = ('id',)

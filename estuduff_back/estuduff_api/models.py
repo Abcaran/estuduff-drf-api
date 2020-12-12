@@ -72,7 +72,12 @@ class User(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=200)
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
-    studyProfile = models.ForeignKey(StudyProfile, on_delete=models.CASCADE)
+    studyProfile = models.ForeignKey(
+        StudyProfile,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.name
