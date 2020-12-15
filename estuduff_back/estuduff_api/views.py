@@ -47,6 +47,24 @@ class StudyPlaceViewSet(viewsets.ModelViewSet):
     queryset = StudyPlace.objects.all().order_by('name')
     serializer_class = StudyPlaceSerializer
 
+    def _params_to_ints(self, qs):
+        return [int(str_id) for str_id in qs.split(',')]
+
+    def get_queryset(self):
+        studyPlaceType = self.request.query_params.get('studyPlaceType')
+        studyProfile = self.request.query_params.get('studyProfile')
+        queryset = self.queryset
+
+        if studyPlaceType:
+            study_place_type = self._params_to_ints(studyPlaceType)
+            queryset = queryset.filter(studyPlaceType__id__in=study_place_type)
+
+        if studyProfile:
+            study_profile = self._params_to_ints(studyProfile)
+            queryset = queryset.filter(studyProfile__id__in=study_profile)
+
+        return queryset
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('name')
@@ -62,8 +80,8 @@ class UserViewSet(viewsets.ModelViewSet):
                 email=email, password=password).exists()
 
             if is_user:
-                return Response(status.HTTP_200_OK)
+                return Response(data='Sucesso', status=status.HTTP_200_OK)
 
-            return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response(data='Usuário ou senha incorretos', status=status.HTTP_401_UNAUTHORIZED)
 
-        return Response(status.HTTP_400_BAD_REQUEST)
+        return Response(data='Usuário ou senha não preenchidos', status=status.HTTP_400_BAD_REQUEST)
