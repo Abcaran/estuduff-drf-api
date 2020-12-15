@@ -74,9 +74,8 @@ class User(models.Model):
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     studyProfile = models.ForeignKey(
         StudyProfile,
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE
+        default=1,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
