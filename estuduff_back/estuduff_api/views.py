@@ -80,9 +80,11 @@ class UserViewSet(viewsets.ModelViewSet):
                 email=email, password=password).first()
             serializer = UserSerializer(user)
             user_data = serializer.data
-            program_data = Program.objects.filter(pk=user_data.program).first()
-            user_data['program_name'] = program_data.name
+            program_data = Program.objects.filter(
+                pk=user_data['program']).first()
 
+            user_data['program_name'] = program_data.name
+            
             if user:
                 return Response(data=user_data, status=status.HTTP_200_OK)
 
