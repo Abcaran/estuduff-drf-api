@@ -14,17 +14,17 @@ Caso ocorra algum erro na instalação do requirements.txt no Linux:
   2. Após instale o pyenv: `curl https://pyenv.run/ | bash` e `exec $SHELL`
   3. Atualize o pyenv: 
   
-    `git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv`
-    `pyenv update`
-    `echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile`
-    `echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile`
-    `echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile`
-    `git clone https://github.com/pyenv/pyenv.git ~/.pyenv`
-    `echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc`
-    `echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc`
-    `echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n eval "$(pyenv init -)"\nfi' >> ~/.bashrc`
-    `exec "$SHELL"`
-    `echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile`
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+    pyenv update
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+    echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+    echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+    exec "$SHELL"
+    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
     
   4. Instale o plugin libpq-dev: `sudo apt-get install libpq-dev python-dev`
   5. Instale o pip install psycopg2 na pasta da aplicação: `pip install psycopg2`
