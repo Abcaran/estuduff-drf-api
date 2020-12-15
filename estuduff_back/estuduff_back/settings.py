@@ -145,6 +145,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATIC_ROOT = 'staticfiles'
+
 # Heroku
 django_heroku.settings(locals())
 options = DATABASES['default'].get('OPTIONS', {})
