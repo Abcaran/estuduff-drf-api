@@ -80,8 +80,8 @@ class UserViewSet(viewsets.ModelViewSet):
                 email=email, password=password).exists()
 
             if is_user:
-                return Response(status.HTTP_200_OK)
+                return Response(data='Sucesso', status=status.HTTP_200_OK)
 
-            return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response(data='Usuário ou senha incorretos', status=status.HTTP_401_UNAUTHORIZED)
 
-        return Response(status.HTTP_400_BAD_REQUEST)
+        return Response(data='Usuário ou senha não preenchidos', status=status.HTTP_400_BAD_REQUEST)
