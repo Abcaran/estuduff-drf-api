@@ -76,12 +76,14 @@ class UserViewSet(viewsets.ModelViewSet):
         password = request.data.get('password', None)
 
         if email and password:
-            is_user = User.objects.filter(
-                email=email, password=password).exists()
+            user = User.objects.filter(
+                email=email, password=password).first()
+            serializer = UserSerializer(user)
+            user_data = serializer.data
 
-            if is_user:
-                return Response(status.HTTP_200_OK)
+            if user:
+                return Response(data=user_data, status=status.HTTP_200_OK)
 
-            return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response(data='Invalid user or password', status=status.HTTP_401_UNAUTHORIZED)
 
-        return Response(status.HTTP_400_BAD_REQUEST)
+        return Response(data='User or password not informed', status=status.HTTP_400_BAD_REQUEST)
